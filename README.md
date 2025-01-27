@@ -4,7 +4,7 @@ An app that accepts a receipt, processes to it to count points and returns the p
 
 ## Technologies used
 
-- Python v3.8
+- Python v3.9
 - Flask
 - Postman (API testing)
 
@@ -39,6 +39,7 @@ Returns a receipt ID
     "id": "cbca3b11-1ff5-44c0-98aa-e7d6e4a882df"
 }
 ```
+``` NOTE: 400 error is thrown for invalid receipt ```
 
 ### Get total points
 `GET http://127.0.0.1:8080/receipts/<receipt_id>/points` - add the receipt id from above api

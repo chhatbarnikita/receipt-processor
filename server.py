@@ -30,6 +30,9 @@ Returns:
 def process_receipts():
     try:
         receipt = request.get_json()
+        if not receipt:
+            return jsonify({"error": "Invalid receipt data provided."}), 400
+
         receipt_id = uuid.uuid4()
         points = 0
 
@@ -68,7 +71,12 @@ def process_receipts():
             points += 10
 
         totalPoints[receipt_id] = points
+        print(totalPoints)
         return jsonify({"id": receipt_id})
+
+    except KeyError as e:
+        missing_field = e.args[0]
+        return jsonify({"error": f"Missing receipt field: {missing_field}"}), 400
 
     except:
         return 'Error occurred while processing the receipt !!'
